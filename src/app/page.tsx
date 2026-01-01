@@ -65,8 +65,22 @@ export default function Home() {
               admissions to attendance, events, faculties, etc.
             </p>
             <div className={styles.heroActions}>
-              <button className={styles.primary}>Book a demo</button>
-              <button className={styles.outline}>View sample flows</button>
+              <button
+                className={styles.primary}
+                onClick={() => setDemoOpen(true)}
+              >
+                Book a demo
+              </button>
+              <button
+                className={styles.outline}
+                onClick={() => {
+                  document
+                    .querySelector("#samples")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                View sample flows
+              </button>
             </div>
             <div className={styles.heroHighlights}>
               <span className={styles.heroTag}>99.2% answer accuracy</span>
@@ -261,8 +275,15 @@ export default function Home() {
             </p>
           </div>
           <div className={styles.ctaActions}>
-            <button className={styles.primary}>Schedule a demo</button>
-            <button className={styles.ghost}>See pricing</button>
+            <button
+              className={styles.primary}
+              onClick={() => setDemoOpen(true)}
+            >
+              Schedule a demo
+            </button>
+            <button className={styles.ghost} onClick={() => setDemoOpen(true)}>
+              See pricing
+            </button>
           </div>
         </section>
       </main>
