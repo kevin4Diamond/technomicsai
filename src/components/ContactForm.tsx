@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./ContactForm.module.css";
 
 const interests = [
@@ -18,13 +18,22 @@ export default function ContactForm() {
     "idle"
   );
   const [error, setError] = useState("");
+  // When the form appeared; the server rejects submissions that come in too fast to be human.
+  const shownAt = useRef(0);
+
+  useEffect(() => {
+    if (status === "idle") shownAt.current = Date.now();
+  }, [status]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("sending");
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
+    const payload = {
+      ...Object.fromEntries(formData.entries()),
+      elapsedMs: shownAt.current ? Date.now() - shownAt.current : 0,
+    };
 
     try {
       const response = await fetch("/api/demo", {
@@ -66,6 +75,13 @@ export default function ContactForm() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
+      {/* Honeypot: hidden from people, but bots fill it in. */}
+      <div className={styles.honeypot} aria-hidden="true">
+        <label>
+          Website
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
       <div className={styles.row}>
         <label>
           Name
