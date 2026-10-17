@@ -1,0 +1,36 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mark {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.word {
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.03em;
+}
+
+.ai {
+  margin-left: 3px;
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.3em;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.large .mark {
+  width: 40px;
+  height: 40px;
+}
+
+.large .word {
+  font-size: 1.5rem;
+}

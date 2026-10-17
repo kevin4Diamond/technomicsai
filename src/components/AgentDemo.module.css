@@ -1,0 +1,200 @@
+.card {
+  position: relative;
+  border-radius: 24px;
+  background: var(--dark);
+  color: var(--on-dark);
+  padding: 22px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 40px 80px -30px rgba(14, 14, 12, 0.45),
+    0 18px 30px -18px rgba(14, 14, 12, 0.35);
+  transform: rotate(1.2deg);
+  transition: transform 0.6s var(--ease);
+}
+
+.card:hover {
+  transform: rotate(0deg);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  color: var(--on-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.liveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 6px rgba(255, 79, 31, 0.15);
+  }
+}
+
+.body {
+  margin-top: 18px;
+  animation: enter 0.5s var(--ease) both;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.trigger {
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--dark-2);
+  border: 1px solid var(--line-dark);
+}
+
+.triggerLabel {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  color: var(--on-dark-muted);
+}
+
+.trigger strong {
+  font-weight: 500;
+  font-size: 1.02rem;
+}
+
+.steps {
+  list-style: none;
+  display: grid;
+  gap: 2px;
+  margin: 14px 0;
+  padding-left: 14px;
+  border-left: 1px dashed var(--line-dark);
+  margin-left: 16px;
+}
+
+.steps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 0.92rem;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.status {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-left: -26px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  background: var(--dark);
+  border: 1px solid var(--line-dark);
+  flex-shrink: 0;
+}
+
+.idle {
+  opacity: 0.35;
+}
+
+.active {
+  color: #fff;
+}
+
+.active .status {
+  border-color: var(--accent);
+}
+
+.done .status {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.spinner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  border-right-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--on-dark);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s var(--ease);
+}
+
+.result span {
+  color: var(--accent);
+  font-size: 0.7rem;
+}
+
+.resultShow {
+  opacity: 1;
+  transform: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-dark);
+  font-size: 0.78rem;
+  color: var(--on-dark-muted);
+}
+
+.footerTag {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line-dark);
+  color: var(--on-dark);
+}
+
+@media (max-width: 560px) {
+  .card {
+    transform: none;
+    padding: 18px;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

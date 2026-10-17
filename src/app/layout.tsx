@@ -1,23 +1,28 @@
 import type { Metadata } from "next";
-import { Fraunces, Space_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const geist = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
 });
 
-const fraunces = Fraunces({
-  variable: "--font-display",
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Technomics AI | Conversational AI for Schools",
+  title: "Technomics AI | AI Consulting & Implementation",
   description:
-    "A modern, secure AI front desk for schools and enterprise teams.",
+    "You don't need to hire AI engineers. Technomics AI sets up AI for your business, connects it to your existing tools, and trains your staff to run and maintain it.",
 };
 
 export default function RootLayout({
@@ -27,7 +32,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} ${fraunces.variable}`}>
+      <body
+        className={`${geist.variable} ${instrumentSerif.variable} ${geistMono.variable}`}
+      >
         {children}
       </body>
     </html>
